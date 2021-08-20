@@ -18,6 +18,3 @@ GUID="{{ lookup('env', 'GUID') }}"
 
 [control_node]
 localhost ansible_connection=local
-
-[control_node:vars]
-GUID="{{ lookup('env', 'GUID') }}"

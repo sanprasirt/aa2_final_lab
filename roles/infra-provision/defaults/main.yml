@@ -1,38 +1,38 @@
 ---
 instances:
   - name: app1
-    keypair: ${GUID}-keypair
+    keypair: "{{GUID}}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
-    security_group: ${GUID}-HostSG
-    internal_network: ${GUID}-dev-network
+    security_group: "{{GUID}}-HostSG"
+    internal_network: "{{GUID}}-dev-network"
     metadata:
       AnsibleGroup: backend_servers
       deployment_name: dev
   - name: app2
-    keypair: ${GUID}-keypair
+    keypair: "{{GUID}}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
-    security_group: ${GUID}-HostSG
-    internal_network: ${GUID}-dev-network
+    security_group: "{{GUID}}-HostSG"
+    internal_network: "{{GUID}}-dev-network"
     metadata:
       AnsibleGroup: backend_servers
       deployment_name: dev
   - name: appdb1
-    keypair: ${GUID}-keypair
+    keypair: "{{GUID}}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
-    security_group: ${GUID}-HostSG
-    internal_network: ${GUID}-dev-network
+    security_group: "{{GUID}}-HostSG"
+    internal_network: "{{GUID}}-dev-network"
     metadata:
       AnsibleGroup: database_servers
       deployment_name: dev
   - name: frontend1
-    keypair: ${GUID}-keypair
+    keypair: "{{GUID}}-keypair"
     image: rhel-8.3
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
-    security_group: ${GUID}-HostSG
-    internal_network: ${GUID}-dev-network
+    security_group: "{{GUID}}-HostSG"
+    internal_network: "{{GUID}}-dev-network"
     metadata:
       AnsibleGroup: load_balancers
       deployment_name: dev
