@@ -15,3 +15,6 @@ database_servers
 
 [all:vars]
 GUID="{{ lookup('env', 'GUID') }}"
+
+[control_node]
+localhost ansible_connection=local
