@@ -1,2 +1,38 @@
 ---
-# defaults file for roles/infra-provision
+instances:
+  - name: web1
+    keypair: e64a-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: e64a-HostSG
+    internal_network: e64a-dev-network
+    metadata:
+      AnsibleGroup: backend_servers
+      deployment_name: dev
+  - name: web2
+    keypair: e64a-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: e64a-HostSG
+    internal_network: e64a-dev-network
+    metadata:
+      AnsibleGroup: backend_servers
+      deployment_name: dev
+  - name: db
+    keypair: e64a-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: e64a-HostSG
+    internal_network: e64a-dev-network
+    metadata:
+      AnsibleGroup: database_servers
+      deployment_name: dev
+  - name: lb
+    keypair: e64a-keypair
+    image: rhel-8.3
+    flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
+    security_group: e64a-HostSG
+    internal_network: e64a-dev-network
+    metadata:
+      AnsibleGroup: load_balancers
+      deployment_name: dev
