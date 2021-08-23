@@ -12,6 +12,15 @@
     nics:
       - net-name: "{{ instance.internal_network }}"
     meta: "AnsibleGroup={{instance.metadata.AnsibleGroup}},deployment_name={{instance.metadata.deployment_name}}"
+    userdata: |
+      {%- raw -%}#!/bin/bash
+      nmcli connection modify "System eth0"
+      ipv4.ignore-auto-dns yes
+      ipv4.dns {{ ansible_default_ipv4.address }}
+      +ipv4.dns {{ ansible_dns.nameservers.0 }}
+      +ipv4.dns 8.8.8.8
+      systemctl restart NetworkManager
+      {% endraw %}
   loop: "{{ instances }}"
   loop_control:
     loop_var: instance
