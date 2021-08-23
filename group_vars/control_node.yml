@@ -5,7 +5,7 @@ openstack_cloud: "{{GUID}}-project"
 openstack_servers:
 
   - instance_name: app2
-    AnsibleGroup: backend_servers
+    AnsibleGroup: app_servers
     deployment: dev
     security_group_name: "{{GUID}}-HostSG"
     image: "{{ _server_image | default('rhel-8.3') }}"
@@ -14,7 +14,7 @@ openstack_servers:
     key_name: "{{GUID}}-keypair"
     network: "{{GUID}}-dev-network"
   - instance_name: app2
-    AnsibleGroup: backend_servers
+    AnsibleGroup: app_servers
     deployment: dev
     security_group_name: "{{GUID}}-HostSG"
     image: "{{ _server_image | default('rhel-8.3') }}"
