@@ -32,12 +32,20 @@
   tags:
     - smoketest
   tasks:
+    - name: os_server_info
+      os_server_info:
+        server: frontend1
+      register: frontend
+      delegate_to: localhost
     - name: Check webserver for correct response
       uri:
-        url: "http://frontend1.example.com/ping"
+        url: "http://{{ __frontend.private_v4 }}/ping"
         return_content: yes
       until: '"alive" in result.content'
       retries: 10
       delay: 1
+      loop: "{{ frontend.openstack_servers }}"
+      loop_control:
+        loop_var: __frontend
       register: result
       delegate_to: localhost
