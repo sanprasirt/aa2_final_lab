@@ -17,10 +17,12 @@ app_yum_packages:
   - python3
   - python3-devel
   - python3-pip
+#  - psycopg2
 
 pip_dependencies:
   - virtualenv
   - pip
-#  - psycopg2-binary==2.8.6
-postgres_rhel8_repo: "@postgresql:10"
+#  - psycopg2-binary
+
+postgres_rhel7_repo: "@postgresql:10"
 postgres_library: python3-psycopg2
