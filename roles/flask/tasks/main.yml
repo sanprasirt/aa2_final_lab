@@ -37,7 +37,7 @@
     dest: "{{ flask_home }}/{{ flask_app_name }}"
     owner: "{{ flask_user }}"
 
-- name: Virtualenv setup
+- name: virtualenv setup
   block:
     - name: Setup pre-requisite pip3 packages
       pip:
