@@ -12,11 +12,14 @@
     name: "{{ flask_user }}"
     state: present
 
-- name: Install flask packages
-  package:
+- name: Install flask packages including postgres pre-reqs
+  dnf:
     name: "{{ __package }}"
     state: present
-  loop: "{{ app_yum_packages }}"
+  loop:
+    - "{{ postgres_rhel8_repo }}"
+    - "{{ app_yum_packages }}"
+    - "{{ postgres_library }}"
   loop_control:
     loop_var: __package
 
@@ -28,6 +31,7 @@
     force: yes
   tags:
     - git
+
 - name: "Change flash repo owner to {{ flask_user }} recursively"
   file:
     dest: "{{ flask_home }}/{{ flask_app_name }}"
@@ -50,6 +54,7 @@
   tags:
     - venv
     - virtualenv
+
 - name: Initialize flask app database resources
   command: "{{ virtualenv_home }}/{{ flask_app_name }}/bin/python3 {{ flask_home }}/{{ flask_app_name }}/config.py"
   run_once: true
