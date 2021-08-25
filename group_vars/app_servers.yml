@@ -17,7 +17,6 @@ app_yum_packages:
   - python3
   - python3-devel
   - python3-pip
-#  - psycopg2
 
 pip_dependencies:
   - virtualenv
