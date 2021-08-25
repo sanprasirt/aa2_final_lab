@@ -1,9 +1,9 @@
 - hosts: control
   tasks:
     - debug:
-      
+
 - name: Add subscription
-  hosts: load_balancers,database_servers,backend_servers
+  hosts: load_balancers,database_servers,app_servers
   gather_facts: true
   tasks:
     - debug:
@@ -15,7 +15,7 @@
         ipv4.dns {{ hostvars['control'].ansible_default_ipv4.address }}
         +ipv4.dns {{ hostvars['control'].ansible_dns.nameservers.1 }}
         +ipv4.dns 8.8.8.8
-    
+
     - name: Restart NetworkManager
       service:
         name: NetworkManager
@@ -29,7 +29,7 @@
 
     - name: register system and attach subs
       redhat_subscription:
-        state:   present
+        state: present
         username: "admin"
         password: "r3dh4t1!"
         auto_attach: true
