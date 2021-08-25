@@ -1,3 +1,4 @@
+---
 - name: Create server instances
   os_server:
     #   cloud:            "{{ __openstack_server.openstack_cloud                           | default('openstack') }}"
