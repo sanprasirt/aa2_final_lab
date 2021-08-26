@@ -1,7 +1,7 @@
 ---
 - name: Manage OpenStack Servers
   hosts: control_node
-  #gather_facts: false
+  gather_facts: false
   become: false
   roles:
     - manage_inmemory_inventory
@@ -10,30 +10,15 @@
   hosts: load_balancers,app_servers,database_servers
   become: true
   tasks:
-    - debug:
-        msg: "{{ hostvars['control_node'].ansible_default_ipv4.address }}, {{ hostvars['control_node'].ansible_dns.nameservers.0 }} "
     - name: Insert DNS IP
       command: >-
         nmcli connection modify "System eth0"
         ipv4.ignore-auto-dns yes
-        ipv4.dns {{ hostvars['control_node'].ansible_default_ipv4.address }}
-        +ipv4.dns {{ hostvars['control_node'].ansible_dns.nameservers.1 }}
+        ipv4.dns {{ ansible_default_ipv4.address }}
+        +ipv4.dns {{ ansible_dns.nameservers.0 }}
         +ipv4.dns 8.8.8.8
 
     - name: Restart NetworkManager
       service:
         name: NetworkManager
         state: restarted
-
-    - name: install katello-ca-consumer package
-      yum:
-        name: http://satellite.example.com/pub/katello-ca-consumer-latest.noarch.rpm
-        disable_gpg_check: true
-        state: present
-
-    - name: register system and attach subs
-      redhat_subscription:
-        state: present
-        username: "admin"
-        password: "r3dh4t1!"
-        auto_attach: true
