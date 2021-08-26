@@ -11,13 +11,13 @@
   become: true
   tasks:
     - debug:
-        msg: "{{ hostvars['control'].ansible_default_ipv4.address }}, {{ hostvars['control'].ansible_dns.nameservers.0 }} "
+        msg: "{{ hostvars['control_node'].ansible_default_ipv4.address }}, {{ hostvars['control_node'].ansible_dns.nameservers.0 }} "
     - name: Insert DNS IP
       command: >-
         nmcli connection modify "System eth0"
         ipv4.ignore-auto-dns yes
-        ipv4.dns {{ hostvars['control'].ansible_default_ipv4.address }}
-        +ipv4.dns {{ hostvars['control'].ansible_dns.nameservers.1 }}
+        ipv4.dns {{ hostvars['control_node'].ansible_default_ipv4.address }}
+        +ipv4.dns {{ hostvars['control_node'].ansible_dns.nameservers.1 }}
         +ipv4.dns 8.8.8.8
 
     - name: Restart NetworkManager
