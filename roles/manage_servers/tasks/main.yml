@@ -14,10 +14,10 @@
     meta: "AnsibleGroup={{ __openstack_server.AnsibleGroup }},deployment_name={{ __openstack_server.deployment }}"
     nics:
       - net-name: "{{ __openstack_server.network }}"
-    userdata: |
+    userdata:
       manage_resolv_conf: true
       resolv_conf:
-        nameservers: ['192.168.53.11', '8.8.8.8']
+        nameservers: ["192.168.53.11", "8.8.8.8"]
         domain: example.com
         options:
           rotate: true
