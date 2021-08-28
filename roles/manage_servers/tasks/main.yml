@@ -17,7 +17,7 @@
     userdata: |
       manage_resolv_conf: true
       resolv_conf:
-        nameservers: ["'{{ ansible_default_ipv4.address }}'", '8.8.8.8']
+        nameservers: ["'{{  __openstack_server.dns }}'", '8.8.8.8']
         domain: example.com
         options:
           rotate: true
