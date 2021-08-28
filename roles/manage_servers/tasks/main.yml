@@ -15,10 +15,10 @@
     nics:
       - net-name: "{{ __openstack_server.network }}"
     userdata: |
-    {%- raw -%}#!/bin/bash
-    nmcli connection modify "System eth0" ipv4.ignore-auto-dns yes ipv4.dns 192.168.50.36 +ipv4.dns-search example.com +ipv4.dns 8.8.8.8
-    systemctl restart NetworkManager
-    {% endraw %}
+      {%- raw -%}#!/bin/bash
+      nmcli connection modify "System eth0" ipv4.ignore-auto-dns yes ipv4.dns 192.168.50.36 +ipv4.dns-search example.com +ipv4.dns 8.8.8.8
+      systemctl restart NetworkManager
+      {% endraw %}
   loop: "{{ openstack_servers }}"
   loop_control:
     loop_var: __openstack_server
