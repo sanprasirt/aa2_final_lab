@@ -12,7 +12,6 @@ openstack_servers:
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
     key_name: "{{GUID}}-keypair"
     network: "{{GUID}}-dev-network"
-    dns: "{{ ansible_default_ipv4.address }}"
   - instance_name: app2
     AnsibleGroup: app_servers
     deployment: dev
@@ -22,7 +21,6 @@ openstack_servers:
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
     key_name: "{{GUID}}-keypair"
     network: "{{GUID}}-dev-network"
-    dns: "{{ ansible_default_ipv4.address }}"
   - instance_name: appdb1
     AnsibleGroup: database_servers
     deployment: dev
@@ -32,7 +30,6 @@ openstack_servers:
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
     key_name: "{{GUID}}-keypair"
     network: "{{GUID}}-dev-network"
-    dns: "{{ ansible_default_ipv4.address }}"
   - instance_name: frontend1
     AnsibleGroup: load_balancers
     deployment: dev
@@ -42,4 +39,3 @@ openstack_servers:
     flavor: GLOBAL-CPU_4_Memory_8192_Disk_30_flavor
     key_name: "{{GUID}}-keypair"
     network: "{{GUID}}-dev-network"
-    dns: "{{ ansible_default_ipv4.address }}"

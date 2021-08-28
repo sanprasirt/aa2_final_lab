@@ -17,7 +17,7 @@
     userdata: |
       manage_resolv_conf: true
       resolv_conf:
-        nameservers: ["'{{  __openstack_server.dns }}'", '8.8.8.8']
+        nameservers: ['192.168.53.11', '8.8.8.8']
         domain: example.com
         options:
           rotate: true
