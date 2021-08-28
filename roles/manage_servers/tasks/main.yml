@@ -14,14 +14,6 @@
     meta: "AnsibleGroup={{ __openstack_server.AnsibleGroup }},deployment_name={{ __openstack_server.deployment }}"
     nics:
       - net-name: "{{ __openstack_server.network }}"
-    userdata: |
-      {%- raw -%}#!/bin/bash
-      nmcli connection modify "System eth0"
-      ipv4.ignore-auto-dns yes
-      ipv4.dns 192.168.53.11
-      +ipv4.dns example.com
-      +ipv4.dns 8.8.8.8
-      {% endraw %}
   loop: "{{ openstack_servers }}"
   loop_control:
     loop_var: __openstack_server
