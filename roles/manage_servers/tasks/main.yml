@@ -14,6 +14,14 @@
     meta: "AnsibleGroup={{ __openstack_server.AnsibleGroup }},deployment_name={{ __openstack_server.deployment }}"
     nics:
       - net-name: "{{ __openstack_server.network }}"
+    userdata: |
+      manage_resolv_conf: true
+      resolv_conf:
+        nameservers: [{{ hostvars['control'].ansible_default_ipv4.address }}, '8.8.8.8']
+        domain: example.com
+        options:
+          rotate: true
+          timeout: 1
   loop: "{{ openstack_servers }}"
   loop_control:
     loop_var: __openstack_server
