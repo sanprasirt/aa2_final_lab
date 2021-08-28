@@ -1,6 +1,6 @@
-- hosts: control
-  tasks:
-    - debug:
+# - hosts: control
+#   tasks:
+#     - debug:
 
 - name: Add subscription
   hosts: load_balancers,database_servers,app_servers
